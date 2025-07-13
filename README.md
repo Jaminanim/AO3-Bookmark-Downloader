@@ -6,7 +6,7 @@ A Chrome extension that downloads your personal AO3 bookmarks as files while res
 
 ## Installation
 
-1. Download or clone all files to a folder on your computer.
+1. Download or `git clone` all files to a folder on your computer.
 2. Open Chrome and navigate to `chrome://extensions/`
 3. Enable "Developer mode" (toggle in the top right corner)
 4. Click "Load unpacked" and select the folder containing the downloaded files
