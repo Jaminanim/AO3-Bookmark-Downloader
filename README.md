@@ -31,7 +31,7 @@ Downloading large bookmark collections may require significant storage space. A 
 
 ### Chrome Download Settings
 For the best experience, configure Chrome to download files automatically:
-1. Go to Chrome Settings > Advanced > Downloads
+1. Go to Chrome Settings > Downloads
 2. Turn off "Ask where to save each file before downloading"
 3. Set your download location to a dedicated folder (e.g., "AO3 Downloads")
 
@@ -72,7 +72,7 @@ This prevents Chrome from prompting you for a save location for each individual 
 
 ## License
 
-This software is released under a custom license that prohibits commercial use and ensures ethical implementation. See the LICENSE file for full details.
+This software is released under a custom license that restricts commercial use and ensures ethical implementation. See the LICENSE file for full details.
 
 ---
 
