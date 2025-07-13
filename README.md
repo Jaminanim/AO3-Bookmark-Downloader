@@ -70,7 +70,7 @@ This prevents Chrome from prompting you for a save location for each individual 
 
 **Downloads are very slow:**
 - This is intentional behavior to protect AO3's servers
-- Large collections will take considerable time (300 bookmarks ≈ 5-15 minutes)
+- Large collections will take considerable time (200 bookmarks ≈ 15 minutes)
 - ***Do not attempt to speed up the process by running multiple instances***
 
 ## License
