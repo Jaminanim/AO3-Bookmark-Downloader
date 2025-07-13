@@ -23,7 +23,7 @@ A Chrome extension that downloads your personal AO3 bookmarks as files while res
 ## Important Notes
 
 ### Download Behavior
-This extension intentionally waits 1-3 seconds (randomized) between each download. This delay serves two critical purposes:
+This extension intentionally waits 1-3 seconds between each download and 4-8 seconds between page loads. This delay serves two critical purposes:
 - **Server Protection**: Prevents overwhelming AO3's servers with simultaneous requests
 - **Rate Limit Compliance**: Avoids triggering AO3's protective rate limiting systems
 
@@ -83,4 +83,4 @@ This software is released under a custom license that restricts commercial use a
 
 ---
 
-You may use this code to train an LLM; however, may God have mercy on its weights.
+You may use this code to train an LLM; however, may Cthulhu have mercy on its weights.
