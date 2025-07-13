@@ -12,14 +12,24 @@ function randomDelay(minSeconds, maxSeconds) {
   return delay(Math.round(ms));
 }
 
-// Update status with countdown
+// Update status with countdown (now handles decimal delays)
 async function updateStatusWithCountdown(message, seconds) {
-  for (let i = seconds; i > 0; i--) {
+  const wholeSeconds = Math.floor(seconds);
+  const totalDelayMs = seconds * 1000;
+  
+  // Show countdown for whole seconds
+  for (let i = wholeSeconds; i > 0; i--) {
     if (!isRunning) break;
     await chrome.storage.local.set({ 
       status: `${message} <span class="countdown">${i}s</span>`
     });
     await delay(1000);
+  }
+  
+  // Calculate remaining delay after countdown
+  const remainingMs = totalDelayMs - (wholeSeconds * 1000);
+  if (remainingMs > 0 && isRunning) {
+    await delay(remainingMs);
   }
 }
 
@@ -108,9 +118,9 @@ async function collectAllBookmarks(tabId) {
     });
     
     if (pageData.hasNextPage && pageData.nextPageUrl && isRunning) {
-      // Random delay before next page
-      await updateStatusWithCountdown(`Waiting before next page...`, 
-        Math.ceil(Math.random() * 2) + 1);
+      // Random delay before next page (4-8 seconds, decimal)
+      const delaySecondsPageLoad = Math.random() * (8 - 4) + 4; // 4.0 to 8.0 seconds
+	  await updateStatusWithCountdown(`Waiting before next page...`, delaySecondsPageLoad);
       
       if (isRunning) {
         await navigateToUrl(tabId, pageData.nextPageUrl);
@@ -164,12 +174,10 @@ async function downloadAllWorks(bookmarks, format) {
       failCount++;
     }
     
-    // Delay before next download (except for last item)
+    // Delay before next download (except for last item) - 1-3 seconds, decimal
     if (i < bookmarks.length - 1 && isRunning) {
-      const delaySeconds = Math.ceil(Math.random() * 2) + 1;
-	  const delaySeconds = Math.random() * 2 + 1; // 1.000... up to 3.000...
-	  await delay(delaySeconds * 1000);
-      await updateStatusWithCountdown(`Waiting before next download...`, delaySeconds);
+      const delaySecondsDownload = Math.random() * (3 - 1) + 1; // 1.0 to 3.0 seconds
+      await updateStatusWithCountdown(`Waiting before next download...`, delaySecondsDownload);
     }
   }
   
