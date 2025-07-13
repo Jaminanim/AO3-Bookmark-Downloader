@@ -1,10 +1,10 @@
 # AO3 Bookmarks Downloader
 
-A Chrome extension that downloads your personal AO3 bookmarks as files while respecting server resources and rate limits.
+A Chrome extension that downloads your personal AO3 bookmarks as files while respecting server resources and rate limits. ***PLEASE SEE "Chrome Download Settings" BEFORE STARTING***
 
 ## Installation
 
-1. Download all files to a folder on your computer.
+1. Download or clone all files to a folder on your computer.
 2. Open Chrome and navigate to `chrome://extensions/`
 3. Enable "Developer mode" (toggle in the top right corner)
 4. Click "Load unpacked" and select the folder containing the downloaded files
@@ -15,7 +15,8 @@ A Chrome extension that downloads your personal AO3 bookmarks as files while res
 1. Navigate to your AO3 bookmarks page (`https://archiveofourown.org/users/[username]/bookmarks`)
 2. Click the extension icon in your Chrome toolbar
 3. Select your preferred file format from the dropdown menu
-4. Click "Start Download"
+4. Click "Start Download".
+5. It will then load through your bookmark pages.
 
 ## Important Notes
 
