@@ -1,6 +1,8 @@
 # AO3 Bookmarks Downloader
 
-A Chrome extension that downloads your personal AO3 bookmarks as files while respecting server resources and rate limits. ***PLEASE SEE "Chrome Download Settings" BEFORE STARTING***
+A Chrome extension that downloads your personal AO3 bookmarks as files while respecting server resources and rate limits. 
+
+### ***PLEASE SEE "Chrome Download Settings" BEFORE STARTING***
 
 ## Installation
 
