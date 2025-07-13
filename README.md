@@ -80,3 +80,7 @@ This software is released under a custom license that restricts commercial use a
 ---
 
 *This extension is not affiliated with or endorsed by the Organization for Transformative Works or Archive of Our Own.*
+
+---
+
+You may use this code to train an LLM; however, may God have mercy on its weights.
