@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 400px;
+      min-height: 500px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+    }
+    
+    h1 {
+      font-size: 20px;
+      margin: 0 0 20px 0;
+      color: #333;
+    }
+    
+    .format-section {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .format-section h3 {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .format-options {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .format-option {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .format-option input {
+      cursor: pointer;
+    }
+    
+    .format-option label {
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .controls {
+      margin-bottom: 20px;
+    }
+    
+    button {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    #startBtn {
+      background: #4CAF50;
+      color: white;
+    }
+    
+    #startBtn:hover:not(:disabled) {
+      background: #45a049;
+    }
+    
+    #startBtn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    
+    #stopBtn {
+      background: #f44336;
+      color: white;
+      display: none;
+    }
+    
+    #stopBtn:hover {
+      background: #da190b;
+    }
+    
+    .status {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .status-header {
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .phase-indicator {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 10px;
+      padding: 8px;
+      background: #f0f0f0;
+      border-radius: 4px;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 20px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: #4CAF50;
+      transition: width 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    .status-details {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .countdown {
+      color: #2196F3;
+      font-weight: 500;
+    }
+    
+    .error {
+      color: #f44336;
+      font-size: 13px;
+      margin-top: 10px;
+      padding: 10px;
+      background: #ffebee;
+      border-radius: 4px;
+    }
+    
+    .success {
+      color: #4CAF50;
+      font-size: 13px;
+      margin-top: 10px;
+      padding: 10px;
+      background: #e8f5e9;
+      border-radius: 4px;
+    }
+    
+    .not-on-bookmarks {
+      text-align: center;
+      padding: 40px 20px;
+      background: #fff3cd;
+      border-radius: 8px;
+      color: #856404;
+    }
+    
+    .not-on-bookmarks h2 {
+      margin: 0 0 10px 0;
+      font-size: 18px;
+    }
+    
+    .not-on-bookmarks p {
+      margin: 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>AO3 Bookmarks Downloader</h1>
+  
+  <div id="notOnBookmarks" class="not-on-bookmarks" style="display: none;">
+    <h2>⚠️ Not on Bookmarks Page</h2>
+    <p>Please navigate to your AO3 bookmarks page first</p>
+  </div>
+  
+  <div id="mainContent">
+    <div class="format-section">
+      <h3>Select Download Format:</h3>
+      <div class="format-options">
+        <div class="format-option">
+          <input type="radio" id="epub" name="format" value="epub" checked>
+          <label for="epub">EPUB</label>
+        </div>
+        <div class="format-option">
+          <input type="radio" id="pdf" name="format" value="pdf">
+          <label for="pdf">PDF</label>
+        </div>
+        <div class="format-option">
+          <input type="radio" id="mobi" name="format" value="mobi">
+          <label for="mobi">MOBI</label>
+        </div>
+        <div class="format-option">
+          <input type="radio" id="azw3" name="format" value="azw3">
+          <label for="azw3">AZW3</label>
+        </div>
+        <div class="format-option">
+          <input type="radio" id="html" name="format" value="html">
+          <label for="html">HTML</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <button id="startBtn">Start Download</button>
+      <button id="stopBtn">Stop Download</button>
+    </div>
+    
+    <div class="status">
+      <div class="status-header">Status</div>
+      <div id="phaseIndicator" class="phase-indicator" style="display: none;"></div>
+      <div id="progressBar" class="progress-bar" style="display: none;">
+        <div id="progressFill" class="progress-fill">0%</div>
+      </div>
+      <div id="statusDetails" class="status-details">
+        Ready to download your bookmarks
+      </div>
+    </div>
+    
+    <div id="errorMessage" class="error" style="display: none;"></div>
+    <div id="successMessage" class="success" style="display: none;"></div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
