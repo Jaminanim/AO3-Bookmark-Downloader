@@ -29,7 +29,13 @@ This extension intentionally waits 1-3 seconds between each download and 4-8 sec
 - **Server Protection**: Prevents overwhelming AO3's servers with simultaneous requests
 - **Rate Limit Compliance**: Avoids triggering AO3's protective rate limiting systems
 
-**Please do not modify the code to remove these delays.** ***Mass downloading without rate limiting can harm AO3's infrastructure and may result in your IP being temporarily blocked.***
+**Please do not modify the code to remove these delays.** ***Mass downloading without rate limiting can harm AO3's infrastructure and may result in your IP being temporarily blocked or being banned.***
+
+**I chose these times as they are possible without the extension:**
+1. Quickly open each new story in your bookmarks with middle/scroll-wheel click
+2. Open next page, repeat step 1 for each page
+3. Position your mouse over the download button
+4. Cycle through the browser tabs with Ctrl+Tab, each time hitting download, then your chosen file type
 
 ### Storage Requirements
 Downloading large bookmark collections may require significant storage space. A collection of 300 works can require up to 400 MB of disk space, depending on work lengths and chosen file format.
